@@ -1,0 +1,32 @@
+#imageContainer {
+    position: relative;
+}
+#canvasMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: crosshair;
+}
+canvas{
+    outline: black 3px solid;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+  }
+  
+  .item {
+    width: 10em;
+  }
+
+  textarea {
+    width: 300px;
+    height: 150px;
+  }
+body{
+    background-color: blanchedalmond;
+}
+
