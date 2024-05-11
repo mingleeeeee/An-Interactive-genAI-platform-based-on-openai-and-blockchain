@@ -14,7 +14,7 @@ app.secret_key = 'thisisasecret'
 # Define the directory for storing audio files
 AUDIO_DIR = os.path.join(app.root_path, 'static')
 client = OpenAI(
-      api_key="sk-proj-VxmcADlPTZpqUac2a2YZT3BlbkFJ6ob4iHf5xHqtVTA5xeYL"
+      api_key="api-key"
 )
 CORS(app)  # Enable CORS for all routes of the Flask app
 variables={}
