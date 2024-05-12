@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@metamask/sdk": "^0.20.3",
     "@story-protocol/core-sdk": "^1.0.0-rc.11",
     "viem": "^2.10.3"
   },

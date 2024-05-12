@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ちいかわ</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<audio id="audioPlayer" controls style="display:none">
+    <source src="" type="audio/wav">
+    Your browser does not support the audio element.
+</audio>
+
+<body>
+    <div class="container">
+        <h1>ちいかわ</h1>
+        <img src="/static/chiikawa.png" alt="Chatbot Image">
+        <div id="response"></div>
+        <input type="text" id="prompt" name="prompt" placeholder="Start typing..." required>
+        <button type="submit" id="chatButton">Chat</button>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>

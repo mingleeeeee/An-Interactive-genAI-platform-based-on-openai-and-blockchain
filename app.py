@@ -14,26 +14,21 @@ app.secret_key = 'thisisasecret'
 # Define the directory for storing audio files
 AUDIO_DIR = os.path.join(app.root_path, 'static')
 client = OpenAI(
-      api_key="api-key"
+      api_key="key"
 )
 CORS(app)  # Enable CORS for all routes of the Flask app
-variables={}
-variables["ori_image"]= "static/chiikawa_rgba.png"
-variables["mask_image"]=""
+# variables={}
+# variables["ori_image"]= "static/chiikawa_rgba.png"
+# variables["mask_image"]=""
 
 @app.route('/')
 def static_file():
-    if 'mask' in session:
+    if 'mask_image' in session:
         # Clear the variable from the session
-        session.pop('mask')
-        variables["ori_image"]= "static/chiikawa_rgba.png"
-        variables["mask_image"]=""
+        session.pop('mask_image')
+        session["ori_image"]= "static/chiikawa_rgba.png"
         print('mask cleared')
-    else:
-        # Set the variable in the session
-        session['mask'] = 'set'
-        print('mask set')
-    return app.send_static_file('mask.html')
+    return app.send_static_file('index.html')
 @app.route('/static/<path:filename>')
 def serve_static(filename):
     return send_from_directory(AUDIO_DIR, filename, mimetype='audio/wav')
@@ -62,7 +57,8 @@ def save_image():
         with open(save_path, 'wb') as f:
             f.write(image_data)
         # Current image ready to mask
-        variables["mask_image"] = save_path
+        #variables["mask_image"] = save_path
+        session["mask_image"] = save_path
 
         # Respond with the URL of the saved image
         saved_image_url = f'/static/{filename}'
@@ -85,8 +81,8 @@ def img_recreate():
         # Replace this with your actual image processing logic
         response = client.images.edit(
             model="dall-e-2",
-            image=open(variables["ori_image"], "rb"),
-            mask=open(variables["mask_image"], "rb"),
+            image=open(session["ori_image"], "rb"),
+            mask=open(session["mask_image"], "rb"),
             prompt=prompt,
             n=1,
             size="256x256"
@@ -115,7 +111,7 @@ def img_recreate():
         resized_image.save(gen_image_path)
 
         # Update origin image to mask
-        variables["ori_image"] = gen_image_path
+        session["ori_image"] = gen_image_path
         # Respond with the generated image filename and URL
         gen_image_url = f'/static/{gen_image_filename}'
         return jsonify({'img_filename': gen_image_url}), 200
