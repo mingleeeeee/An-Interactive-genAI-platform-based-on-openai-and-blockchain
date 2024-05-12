@@ -1,0 +1,19 @@
+{
+  "name": "an-interactive-genai-platform-based-on-openai-and-blockchain",
+  "version": "1.0.0",
+  "description": "### Dependency `pip install -r requirements.txt`  ### How to start `python app.py`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@story-protocol/core-sdk": "^1.0.0-rc.11",
+    "viem": "^2.10.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.11",
+    "typescript": "^5.4.5"
+  }
+}
